@@ -1,5 +1,6 @@
 import express from "express";
-import userRoute from "./router/users.routers.js";
+import UserRouter from "./router/Users.routers.js";
+import ParentCategoryRouter from "./router/ParentCategory.routers.js";
 import connectDB from "./lib/db.js";
 
 const app = express();
@@ -17,7 +18,10 @@ app.get("/", (req, res) => {
 });
 
 //User Api
-app.use("/api", userRoute);
+app.use("/api", UserRouter);
+
+//Parent Category Api
+app.use("/api", ParentCategoryRouter);
 
 app.listen(PORT, () => {
   console.log(`The server running at http://localhost:${PORT}`);

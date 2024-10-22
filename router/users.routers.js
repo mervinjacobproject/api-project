@@ -6,18 +6,18 @@ import {
   DeleteUser,
 } from "../controllers/user.controllers.js";
 
-const router = express.Router();
+const UserRouter = express.Router();
 
 //Read Users Data
-router.get("/usersread", ReadeUser);
+UserRouter.get("/usersread", ReadeUser);
 
 //Create Users Data
-router.post("/createuser", CreateUser);
+UserRouter.post("/createuser", CreateUser);
 
 //Update Users Data
-router.put("/updateuser", UpdateUser);
+UserRouter.put("/updateuser", UpdateUser);
 
 //Delele User Data
-router.delete("/deleteusers", DeleteUser);
+UserRouter.delete("/deleteusers", DeleteUser);
 
-export default router;
+export default UserRouter;
