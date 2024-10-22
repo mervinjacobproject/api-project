@@ -32,15 +32,51 @@ export const CreateUser = async (req, res) => {
   } catch (error) {
     return res.status(400).json({ message: error.message });
   }
-  // res.json({ message: "User Created Successfully!!" });
 };
 
 //Update Users Data
 export const UpdateUser = async (req, res) => {
-  res.json({ message: "User Updated Successfully!!" });
+  const FindUserId = Number(req.body.UserId);
+  const UpdateUserValue = req.body;
+
+  if (!req.body.UserId) {
+    return res.status(400).send("userId is required");
+  }
+
+  try {
+    const updateUser = await Users.findOneAndUpdate(
+      { UserId: FindUserId },
+      UpdateUserValue,
+      { new: true }
+    );
+    if (!UpdateUserValue) {
+      return res.status(404).send("User not found");
+    }
+    res.status(200).json(updateUser);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
 };
 
 //Delele User Data
 export const DeleteUser = async (req, res) => {
-  res.json({ message: "User Delete Successfully!!" });
+  const FindUserIds = JSON.parse(req.body.UserIds);
+
+  if (!FindUserIds || !Array.isArray(FindUserIds)) {
+    return res.status(400).send("userIds is required and should be an array");
+  }
+
+  try {
+    const DeleteUser = await Users.deleteMany({
+      UserId: { $in: FindUserIds },
+    });
+
+    if (DeleteUser.deletedCount === 0) {
+      return res.status(404).send("No users found to delete");
+    }
+
+    res.send(`${DeleteUser.deletedCount} users deleted successfully`);
+  } catch (error) {
+    res.status(500).send("Error deleting users: " + error.message);
+  }
 };

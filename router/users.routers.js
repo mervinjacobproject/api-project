@@ -18,6 +18,6 @@ router.post("/createuser", CreateUser);
 router.put("/updateuser", UpdateUser);
 
 //Delele User Data
-router.delete("/deleteuser", DeleteUser);
+router.delete("/deleteusers", DeleteUser);
 
 export default router;
