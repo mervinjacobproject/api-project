@@ -4,6 +4,7 @@ import {
   CreateUser,
   UpdateUser,
   DeleteUser,
+  UserLogin,
 } from "../controllers/user.controllers.js";
 
 const UserRouter = express.Router();
@@ -19,5 +20,8 @@ UserRouter.put("/updateuser", UpdateUser);
 
 //Delele User Data
 UserRouter.delete("/deleteusers", DeleteUser);
+
+//User Login Api
+UserRouter.post("/userlogin", UserLogin);
 
 export default UserRouter;

@@ -3,6 +3,9 @@ import UserRouter from "./router/Users.routers.js";
 import ParentCategoryRouter from "./router/ParentCategory.routers.js";
 import connectDB from "./lib/db.js";
 
+import dotenv from "dotenv";
+dotenv.config();
+
 const app = express();
 const PORT = 3500;
 

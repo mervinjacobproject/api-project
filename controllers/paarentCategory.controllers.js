@@ -13,8 +13,7 @@ export const ReadeParentCategoryRouter = async (req, res) => {
 //Create Users Data
 export const CreateParentCategoryRouter = async (req, res) => {
   const GetUsers = await ParentCategory.find();
-  const sort =
-    (await GetUsers.sort((a, b) => b.ParentCategory - a.ParentCategory)) || [];
+  const sort = (await GetUsers.sort((a, b) => b.CId - a.CId)) || [];
 
   //Validate Your Data
   const newParentCategory = new ParentCategory({
