@@ -1,6 +1,4 @@
 import Users from "../model/users.model.js";
-// import bcrypt from "bcrypt.js";
-// import jwt from "../middleware/authMiddleware.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 

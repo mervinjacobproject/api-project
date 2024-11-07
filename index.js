@@ -6,8 +6,9 @@ import connectDB from "./lib/db.js";
 import dotenv from "dotenv";
 dotenv.config();
 
+const serverless = require("serverless-http");
 const app = express();
-const PORT = 3500;
+// const PORT = 3500;
 
 //Connect DB
 connectDB();
@@ -26,6 +27,8 @@ app.use("/api", UserRouter);
 //Parent Category Api
 app.use("/api", ParentCategoryRouter);
 
-app.listen(PORT, () => {
-  console.log(`The server running at http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`The server running at http://localhost:${PORT}`);
+// });
+
+module.exports.handler = serverless(app);
